@@ -31,6 +31,7 @@ public class UserMapper implements Mapper<User, UserDto> {
         UserDto userDto=new UserDto();
         userDto.setName(user.getName());
         userDto.setSurname(user.getSurname());
+        userDto.setEmail(user.getEmail());
         userDto.setPhoneNumber(user.getPhoneNumber());
         userDto.setPassword(user.getPassword());
         userDto.setAge(user.getAge());

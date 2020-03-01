@@ -38,15 +38,14 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void delete(int id) {
-        User user=getById(id);
+        User user=userMapper.convertToModel(getById(id));
         userDao.delete(user);
-
     }
 
     @Override
-    public User getById(int id) {
+    public UserDto getById(int id) {
 
-        return userDao.getById(id);
+        return userMapper.convertToDto(userDao.getById(id));
     }
 
     @Override

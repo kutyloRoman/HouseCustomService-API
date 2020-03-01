@@ -1,5 +1,6 @@
 package com.kutylo.lab_2.service;
 
+import com.kutylo.lab_2.dto.FullPlanDto;
 import com.kutylo.lab_2.dto.PlanDto;
 import com.kutylo.lab_2.dto.UserDto;
 import com.kutylo.lab_2.model.User;
@@ -11,4 +12,8 @@ public interface PlanService {
     PlanDto getById(int id);
 
     List<PlanDto> getAll();
+
+    PlanDto save(PlanDto planDto);
+
+    FullPlanDto getFullPlan(int id);
 }

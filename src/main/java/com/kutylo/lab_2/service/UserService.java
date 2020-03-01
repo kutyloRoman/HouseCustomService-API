@@ -14,7 +14,7 @@ public interface UserService {
 
     void delete(int id);
 
-    User getById(int id);
+    UserDto getById(int id);
 
     UserDto getByAddressId(int id);
 

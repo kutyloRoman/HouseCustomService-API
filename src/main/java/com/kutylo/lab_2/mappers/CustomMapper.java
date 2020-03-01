@@ -14,6 +14,9 @@ public class CustomMapper implements Mapper<Custom, CustomDto> {
     @Autowired
     private UserService userService;
 
+    @Autowired
+    private UserMapper userMapper;
+
     @Override
     public Custom convertToModel(CustomDto customDto) {
         Custom custom=new Custom();
@@ -21,7 +24,7 @@ public class CustomMapper implements Mapper<Custom, CustomDto> {
         custom.setTime(customDto.getTime());
         custom.setKindOfWork(customDto.getKindOfWork());
         custom.setScope(customDto.getScope());
-        custom.setUser(userService.getById(customDto.getUserId()));
+        custom.setUser(userMapper.convertToModel(userService.getById(customDto.getUserId())));
 
         return custom;
     }
