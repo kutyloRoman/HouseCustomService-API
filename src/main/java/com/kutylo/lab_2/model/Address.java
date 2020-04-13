@@ -24,7 +24,6 @@ public class Address {
     private String build;
 
     @OneToOne(mappedBy = "address",fetch = FetchType.LAZY)
-    @JsonIgnore
     private User user;
 
     //------------------------------------------------------------------//
@@ -72,16 +71,6 @@ public class Address {
         this.user = user;
     }
 
-    @Override
-    public String toString() {
-        return "Address{" +
-                "id=" + id +
-                ", city='" + city + '\'' +
-                ", street='" + street + '\'' +
-                ", build='" + build + '\'' +
-                ", user=" + user +
-                '}';
-    }
 
     @Override
     public boolean equals(Object o) {
@@ -95,8 +84,5 @@ public class Address {
                 Objects.equals(user, address.user);
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, city, street, build, user);
-    }
+
 }

@@ -1,8 +1,7 @@
 package com.kutylo.lab_2.service;
 
-import com.kutylo.lab_2.dto.TeamDto;
-import com.kutylo.lab_2.model.User;
-
+import com.kutylo.lab_2.dto.teamDto.NewTeamDto;
+import com.kutylo.lab_2.dto.teamDto.TeamDto;
 import java.util.List;
 
 public interface TeamService {
@@ -10,5 +9,9 @@ public interface TeamService {
 
     List<TeamDto> getAll();
 
-    TeamDto save(TeamDto teamDto);
+    TeamDto save(NewTeamDto newTeamDto);
+
+    TeamDto update(TeamDto teamDto);
+
+    void delete(int id);
 }

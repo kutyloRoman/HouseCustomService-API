@@ -1,8 +1,7 @@
 package com.kutylo.lab_2.controller;
 
-import com.kutylo.lab_2.dto.CustomDto;
-import com.kutylo.lab_2.dto.TeamDto;
-import com.kutylo.lab_2.model.Team;
+import com.kutylo.lab_2.dto.teamDto.NewTeamDto;
+import com.kutylo.lab_2.dto.teamDto.TeamDto;
 import com.kutylo.lab_2.service.TeamService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -29,7 +28,17 @@ public class TeamController {
     }
 
     @PostMapping("/")
-    public ResponseEntity<TeamDto> create(@RequestBody TeamDto teamDto){
+    public ResponseEntity<TeamDto> create(@RequestBody NewTeamDto teamDto){
         return new ResponseEntity<>(teamService.save(teamDto), HttpStatus.OK);
+    }
+
+    @PutMapping("/")
+    public ResponseEntity<TeamDto> update(@RequestBody TeamDto teamDto){
+        return new ResponseEntity<>(teamService.update(teamDto), HttpStatus.OK);
+    }
+
+    @DeleteMapping("/{id}")
+    public void delete(int id){
+        teamService.delete(id);
     }
 }

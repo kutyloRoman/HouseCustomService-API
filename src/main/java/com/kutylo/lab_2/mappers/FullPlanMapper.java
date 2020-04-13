@@ -1,8 +1,8 @@
 package com.kutylo.lab_2.mappers;
 
-import com.kutylo.lab_2.dto.CustomDto;
-import com.kutylo.lab_2.dto.FullPlanDto;
-import com.kutylo.lab_2.dto.PlanDto;
+import com.kutylo.lab_2.dto.customDto.CustomDto;
+import com.kutylo.lab_2.dto.planDto.FullPlanDto;
+import com.kutylo.lab_2.dto.planDto.PlanDto;
 import com.kutylo.lab_2.service.CustomService;
 import com.kutylo.lab_2.service.TeamService;
 import com.kutylo.lab_2.service.UserService;
@@ -13,18 +13,11 @@ import org.springframework.stereotype.Component;
 public class FullPlanMapper implements Mapper<PlanDto, FullPlanDto> {
 
     @Autowired
-    CustomMapper customMapper;
-
-    @Autowired
-    TeamMapper teamMapper;
-    @Autowired
     TeamService teamService;
     @Autowired
     CustomService customService;
     @Autowired
     UserService userService;
-    @Autowired
-    UserMapper userMapper;
 
     @Override
     public PlanDto convertToModel(FullPlanDto fullPlanDto) {

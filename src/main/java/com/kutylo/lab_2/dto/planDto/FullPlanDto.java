@@ -1,8 +1,8 @@
-package com.kutylo.lab_2.dto;
+package com.kutylo.lab_2.dto.planDto;
 
-import com.kutylo.lab_2.model.Custom;
-import com.kutylo.lab_2.model.Team;
-import io.swagger.annotations.ApiModelProperty;
+import com.kutylo.lab_2.dto.customDto.CustomDto;
+import com.kutylo.lab_2.dto.teamDto.TeamDto;
+import com.kutylo.lab_2.dto.userDto.UserDto;
 
 public class FullPlanDto {
 

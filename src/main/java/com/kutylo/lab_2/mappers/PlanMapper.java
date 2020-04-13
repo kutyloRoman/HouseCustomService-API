@@ -1,48 +1,25 @@
 package com.kutylo.lab_2.mappers;
 
-import com.kutylo.lab_2.dto.PlanDto;
+import com.kutylo.lab_2.converter.CustomFromIdConverter;
+import com.kutylo.lab_2.converter.TeamFromIdConverter;
+import com.kutylo.lab_2.converter.UserFromIdConverter;
+import com.kutylo.lab_2.dto.planDto.NewPlanDto;
 import com.kutylo.lab_2.model.Plan;
-import com.kutylo.lab_2.service.CustomService;
-import com.kutylo.lab_2.service.TeamService;
+import org.modelmapper.PropertyMap;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
-public class PlanMapper implements Mapper<Plan, PlanDto> {
+public class PlanMapper extends PropertyMap<NewPlanDto,Plan>{
 
     @Autowired
-    CustomService customService;
-
+    private TeamFromIdConverter teamFromIdConverter;
     @Autowired
-    CustomMapper customMapper;
-
-    @Autowired
-    TeamMapper teamMapper;
-
-    @Autowired
-    TeamService teamService;
-
-
+    private CustomFromIdConverter customFromIdConverter;
 
     @Override
-    public Plan convertToModel(PlanDto planDto) {
-        Plan plan=new Plan();
-        plan.setDate(planDto.getDate());
-        plan.setPrice(planDto.getPrice());
-        plan.setCustom(customMapper.convertToModel(customService.getById(planDto.getCustomId())));
-        plan.setTeam(teamMapper.convertToModel(teamService.getById(planDto.getTeamId())));
-
-        return plan;
-    }
-
-    @Override
-    public PlanDto convertToDto(Plan plan) {
-        PlanDto planDto=new PlanDto();
-        planDto.setDate(plan.getDate());
-        planDto.setPrice(plan.getPrice());
-        planDto.setCustomId(plan.getCustom().getId());
-        planDto.setTeamId(plan.getTeam().getId());
-
-        return planDto;
+    protected void configure() {
+        using(teamFromIdConverter).map(source.getTeamId(),destination.getTeam());
+        using(customFromIdConverter).map(source.getCustomId(),destination.getCustom());
     }
 }

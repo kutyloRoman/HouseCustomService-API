@@ -1,20 +1,12 @@
 package com.kutylo.lab_2.service;
 
-import com.kutylo.lab_2.dto.AddressDto;
-import com.kutylo.lab_2.model.Address;
+import com.kutylo.lab_2.dto.addressDto.AddressDto;
 
 import java.util.List;
 
 public interface AddressService {
-    AddressDto save(AddressDto address);
 
-    Address update(Address address, int addressId);
+    AddressDto getById(int id);
 
-    void delete(int id);
-
-    Address getById(int id);
-
-    Address getByUserId(int id);
-
-    List<Address> getAll();
+    List<AddressDto> getAll();
 }

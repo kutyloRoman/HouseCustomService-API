@@ -1,8 +1,8 @@
 package com.kutylo.lab_2.controller;
 
 import com.kutylo.lab_2.dao.UserDao;
-import com.kutylo.lab_2.dto.UserDto;
-import com.kutylo.lab_2.model.User;
+import com.kutylo.lab_2.dto.userDto.NewUserDto;
+import com.kutylo.lab_2.dto.userDto.UserDto;
 import com.kutylo.lab_2.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -17,13 +17,13 @@ public class UserController {
 
     @Autowired
     private UserDao userDao;
+
     @Autowired
     private UserService userService;
 
     @GetMapping("/")
-    public ResponseEntity<List<User>> getAllUser()
+    public ResponseEntity<List<UserDto>> getAllUser()
     {
-
         return new ResponseEntity<>(userService.getAll(), HttpStatus.OK);
     }
 
@@ -32,19 +32,24 @@ public class UserController {
         return new ResponseEntity<>(userService.getById(id),HttpStatus.OK);
     }
 
+    @GetMapping("/address/{id}")
+    public ResponseEntity<UserDto> getUserByAddressId(@PathVariable int id){
+        return new ResponseEntity<>(userService.getByAddressId(id),HttpStatus.OK);
+    }
+
     @PostMapping("/")
-    public ResponseEntity<UserDto> createUser(@RequestBody UserDto user) {
+    public ResponseEntity<UserDto> createUser(@RequestBody NewUserDto user) {
         return new ResponseEntity<>(userService.save(user), HttpStatus.OK);
     }
 
-    @PutMapping("/")
-    public ResponseEntity<UserDto> updateUser(@RequestBody UserDto user) {
-        return new ResponseEntity<>(userService.update(user), HttpStatus.OK);
+    @PutMapping("/{id}")
+    public ResponseEntity<UserDto> updateUser(@PathVariable int id, @RequestBody NewUserDto user) {
+        return new ResponseEntity<>(userService.update(user,id), HttpStatus.OK);
     }
 
+
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteUser(@RequestBody int id) {
+    public void deleteUser(@PathVariable int id) {
         userService.delete(id);
-        return ResponseEntity.noContent().build();
     }
 }

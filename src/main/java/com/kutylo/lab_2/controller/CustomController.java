@@ -1,7 +1,8 @@
 package com.kutylo.lab_2.controller;
 
 import com.kutylo.lab_2.dao.CustomDao;
-import com.kutylo.lab_2.dto.CustomDto;
+import com.kutylo.lab_2.dto.customDto.CustomDto;
+import com.kutylo.lab_2.dto.customDto.NewCustomDto;
 import com.kutylo.lab_2.service.CustomService;
 import com.kutylo.lab_2.service.impl.StatusService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,7 @@ import java.util.List;
 @RestController
 @RequestMapping("api/customs")
 public class CustomController {
+
     @Autowired
     CustomDao customDao;
     @Autowired
@@ -37,8 +39,18 @@ public class CustomController {
     }
 
     @PostMapping("/")
-    public ResponseEntity<CustomDto> createCustom(@RequestBody CustomDto customDto){
+    public ResponseEntity<CustomDto> createCustom(@RequestBody NewCustomDto customDto){
         return new ResponseEntity<>(customService.makeCustom(customDto), HttpStatus.OK);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<CustomDto> updateCustom(@RequestBody NewCustomDto customDto,@PathVariable int id) {
+        return new ResponseEntity<>(customService.update(customDto,id), HttpStatus.OK);
+    }
+
+    @DeleteMapping("/{id}")
+    public void deleteCustom(@PathVariable int id) {
+        customService.delete(id);
     }
 
     @PostMapping(value = "id/status",params = {"id","status"})

@@ -1,9 +1,6 @@
 package com.kutylo.lab_2.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import io.swagger.annotations.ApiModelProperty;
-import org.springframework.context.annotation.Primary;
-
 import javax.persistence.*;
 
 @Entity
@@ -15,19 +12,15 @@ public class Custom {
     private int id;
 
     @Column(name = "kind_of_work")
-    @ApiModelProperty(example = "Electric")
     private String kindOfWork;
 
     @Column(name = "scope")
-    @ApiModelProperty(example = "Big")
     private String scope;
 
     @Column(name = "time_of_end")
-    @ApiModelProperty(example = "3h")
     private String time;
 
     @Column(name="status")
-    @ApiModelProperty(example = "register")
     private String status;
 
     @ManyToOne(cascade = CascadeType.ALL)
@@ -96,5 +89,18 @@ public class Custom {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    @Override
+    public String toString() {
+        return "Custom{" +
+                "id=" + id +
+                ", kindOfWork='" + kindOfWork + '\'' +
+                ", scope='" + scope + '\'' +
+                ", time='" + time + '\'' +
+                ", status='" + status + '\'' +
+                ", user=" + user +
+                ", plan=" + plan +
+                '}';
     }
 }

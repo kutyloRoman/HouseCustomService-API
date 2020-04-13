@@ -1,44 +1,29 @@
-package com.kutylo.lab_2.dto;
+package com.kutylo.lab_2.dto.userDto;
 
-
-import io.swagger.annotations.ApiModelProperty;
+import com.kutylo.lab_2.dto.addressDto.AddressDto;
 
 public class UserDto {
 
-    @ApiModelProperty(example = "Roman")
+    private int id;
     private String name;
-
-    @ApiModelProperty(example = "Romanov")
     private String surname;
-
-    @ApiModelProperty(example = "Roman123")
     private String password;
-
-    @ApiModelProperty(example = "Roman@gmail.com")
     private String email;
-
-    @ApiModelProperty(example = "098234")
     private String phoneNumber;
-
-    @ApiModelProperty(example = "25")
     private int age;
-
-
     private AddressDto address;
 
+    //----------------------------------------------------------------//
     public UserDto() {
     }
 
-    public UserDto( String name, String surname, String password, String email, String phoneNumber, int age, AddressDto address) {
-        this.name = name;
-        this.surname = surname;
-        this.password = password;
-        this.email = email;
-        this.phoneNumber = phoneNumber;
-        this.age = age;
-        this.address = address;
+    public int getId() {
+        return id;
     }
 
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getName() {
         return name;

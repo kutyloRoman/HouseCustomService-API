@@ -1,8 +1,11 @@
-package com.kutylo.lab_2.dto;
+package com.kutylo.lab_2.dto.addressDto;
+
 
 import io.swagger.annotations.ApiModelProperty;
 
 public class AddressDto {
+    private int id;
+
     @ApiModelProperty(example = "Lviv")
     private String city;
 
@@ -12,13 +15,16 @@ public class AddressDto {
     @ApiModelProperty(example = "8a")
     private String build;
 
+    //--------------------------------------------------------///
     public AddressDto() {
     }
 
-    public AddressDto(String city, String street, String build) {
-        this.city = city;
-        this.street = street;
-        this.build = build;
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getCity() {

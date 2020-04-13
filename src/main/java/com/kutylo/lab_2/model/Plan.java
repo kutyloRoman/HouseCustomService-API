@@ -14,14 +14,12 @@ public class Plan {
     private int id;
 
     @Column(name = "date")
-    @ApiModelProperty(example = "12.03.2020")
     private String date;
 
     @Column(name = "price")
-    @ApiModelProperty(example = "250")
     private int price;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.ALL,orphanRemoval = true)
     @JoinColumn(name = "custom_id")
     private Custom custom;
 

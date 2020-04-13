@@ -1,60 +1,42 @@
-package com.kutylo.lab_2.model;
+package com.kutylo.lab_2.dto.userDto;
 
-import javax.persistence.*;
-import java.util.List;
-import java.util.Objects;
+import com.kutylo.lab_2.dto.addressDto.AddressDto;
+import io.swagger.annotations.ApiModelProperty;
 
-@Entity
-@Table(name = "user")
-public class User {
+public class NewUserDto {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
-
-    @Column(name = "name")
+    @ApiModelProperty(example = "Roman")
     private String name;
 
-    @Column(name = "surname")
+    @ApiModelProperty(example = "Romanov")
     private String surname;
 
-    @Column(name = "password")
+    @ApiModelProperty(example = "Roman123")
     private String password;
 
-    @Column(name = "email")
+    @ApiModelProperty(example = "Roman@gmail.com")
     private String email;
 
-    @Column(name = "phone")
+    @ApiModelProperty(example = "098234")
     private String phoneNumber;
 
-    @Column(name = "age")
+    @ApiModelProperty(example = "25")
     private int age;
 
-    @OneToOne(cascade = CascadeType.ALL,orphanRemoval = true)
-    @JoinColumn(name = "address_id")
-    private Address address;
+    private AddressDto address;
 
-    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
-    private List<Custom> customs;
-
-    //---------------------------------------------------------------------//
-    public User() {
+    //--------------------------------------------------------------------//
+    public NewUserDto() {
     }
 
-    public List<Custom> getCustoms() {
-        return customs;
-    }
-
-    public void setCustoms(List<Custom> customs) {
-        this.customs = customs;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
+    public NewUserDto(String name, String surname, String password, String email, String phoneNumber, int age, AddressDto address) {
+        this.name = name;
+        this.surname = surname;
+        this.password = password;
+        this.email = email;
+        this.phoneNumber = phoneNumber;
+        this.age = age;
+        this.address = address;
     }
 
     public String getName() {
@@ -105,15 +87,11 @@ public class User {
         this.age = age;
     }
 
-    public Address getAddress() {
+    public AddressDto getAddress() {
         return address;
     }
 
-    public void setAddress(Address address) {
+    public void setAddress(AddressDto address) {
         this.address = address;
     }
-
-
-
-
 }

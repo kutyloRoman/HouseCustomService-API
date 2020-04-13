@@ -12,12 +12,15 @@ public class Team {
     private int id;
 
     @Column(name = "amount")
-    @ApiModelProperty(example = "5")
     private int amount;
+
+    @Column(name = "description")
+    private String description;
 
     @OneToOne(mappedBy = "team")
     private Plan plan;
 
+    //-----------------------------------------------------------//
     public Team() {
     }
 
@@ -35,6 +38,14 @@ public class Team {
 
     public void setAmount(int amount) {
         this.amount = amount;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public Plan getPlan() {

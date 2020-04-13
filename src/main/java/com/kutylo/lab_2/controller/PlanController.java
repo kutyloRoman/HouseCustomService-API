@@ -1,9 +1,8 @@
 package com.kutylo.lab_2.controller;
 
-import com.kutylo.lab_2.dto.FullPlanDto;
-import com.kutylo.lab_2.dto.PlanDto;
-import com.kutylo.lab_2.dto.TeamDto;
-import com.kutylo.lab_2.model.Plan;
+import com.kutylo.lab_2.dto.planDto.FullPlanDto;
+import com.kutylo.lab_2.dto.planDto.NewPlanDto;
+import com.kutylo.lab_2.dto.planDto.PlanDto;
 import com.kutylo.lab_2.service.PlanService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -36,7 +35,17 @@ public class PlanController {
     }
 
     @PostMapping("/")
-    public ResponseEntity<PlanDto> create(@RequestBody PlanDto planDto){
+    public ResponseEntity<NewPlanDto> create(@RequestBody NewPlanDto planDto){
         return new ResponseEntity<>(planService.save(planDto), HttpStatus.OK);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<NewPlanDto> update(@RequestBody NewPlanDto planDto,@PathVariable int id){
+        return new ResponseEntity<>(planService.update(planDto,id), HttpStatus.OK);
+    }
+
+    @DeleteMapping("/{id}")
+    public void delete(@PathVariable int id){
+       planService.delete(id);
     }
 }

@@ -1,8 +1,11 @@
-package com.kutylo.lab_2.dto;
+package com.kutylo.lab_2.dto.customDto;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import io.swagger.annotations.ApiModelProperty;
 
-public class CustomDto {
+public class NewCustomDto {
+    @JsonIgnore
+    private int id;
 
     @ApiModelProperty(example = "Electric")
     private String kindOfWork;
@@ -13,14 +16,23 @@ public class CustomDto {
     @ApiModelProperty(example = "3h")
     private String time;
 
-    @ApiModelProperty(example = "register")
+    @JsonIgnore
     private String status;
 
+    @ApiModelProperty(example = "1")
     private int userId;
 
-    //------------------------------------------//
+    //--------------------------------------------//
 
-    public CustomDto() {
+    public NewCustomDto() {
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getKindOfWork() {

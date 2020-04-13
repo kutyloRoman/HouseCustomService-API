@@ -2,10 +2,7 @@ package com.kutylo.lab_2.dao.impl;
 
 import com.kutylo.lab_2.dao.CustomDao;
 import com.kutylo.lab_2.model.Custom;
-import com.kutylo.lab_2.model.User;
 import org.springframework.stereotype.Repository;
-
-import javax.persistence.Entity;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
@@ -15,7 +12,7 @@ import java.util.List;
 public class CustomDaoImpl implements CustomDao {
 
     @PersistenceContext
-    EntityManager entityManager;
+    private EntityManager entityManager;
 
     @Transactional
     @Override
@@ -27,7 +24,6 @@ public class CustomDaoImpl implements CustomDao {
     @Transactional
     @Override
     public Custom getById(int id) {
-
         return entityManager.find(Custom.class,id);
     }
 
@@ -38,9 +34,11 @@ public class CustomDaoImpl implements CustomDao {
         return custom;
     }
 
+
+    @Transactional
     @Override
     public void delete(Custom custom) {
-
+        entityManager.remove(custom);
     }
 
     @Transactional

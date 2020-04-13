@@ -30,7 +30,7 @@ CREATE TABLE IF NOT EXISTS custom
 	kind_of_work        VARCHAR(20)         NOT NULL,
 	scope               VARCHAR (20)        NOT NULL,
 	time_of_end         VARCHAR(20)         NOT NULL,
-	status              VARCHAR (10)        NOT NULL,
+	status              VARCHAR (15)        DEFAULT 'REGISTER' ,
     user_id             INT                 NOT NULL,
 
         CONSTRAINT fk_user
@@ -42,7 +42,8 @@ CREATE TABLE IF NOT EXISTS custom
 CREATE TABLE IF NOT EXISTS team
 (
     id                  INT AUTO_INCREMENT PRIMARY KEY,
-	amount              INT           NOT NULL
+	amount              INT           NOT NULL,
+	description         VARCHAR(30)
 );
 
 CREATE TABLE IF NOT EXISTS plan
@@ -61,3 +62,18 @@ CREATE TABLE IF NOT EXISTS plan
 	    FOREIGN KEY (team_id)
 	        REFERENCES team(id)
 );
+
+INSERT INTO address(city,street,build)
+VALUES('lviv','torphiana','5a');
+
+INSERT INTO user(name,surname,password,email,phone,age,address_id)
+VALUES ('roman', 'kutylo', '122', 'lala@gmail.com', '3151', '15', '1');
+
+INSERT INTO custom(kind_of_work,scope,time_of_end,user_id)
+VALUES ('electric', 'big', '2h', '1');
+
+INSERT INTO team(amount,description)
+VALUES ('2','des');
+
+INSERT INTO plan(custom_id,team_id,date,price)
+VALUES ('1','1','25.02','150');

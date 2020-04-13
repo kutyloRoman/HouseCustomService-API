@@ -1,16 +1,13 @@
 package com.kutylo.lab_2.service;
 
-import com.kutylo.lab_2.dao.UserDao;
-import com.kutylo.lab_2.dto.UserDto;
-import com.kutylo.lab_2.model.Address;
-import com.kutylo.lab_2.model.User;
-
+import com.kutylo.lab_2.dto.userDto.NewUserDto;
+import com.kutylo.lab_2.dto.userDto.UserDto;
 import java.util.List;
 
 public interface UserService {
-    UserDto save(UserDto user);
+    UserDto save(NewUserDto user);
 
-    UserDto update(UserDto user);
+    UserDto update(NewUserDto user, int id);
 
     void delete(int id);
 
@@ -18,5 +15,5 @@ public interface UserService {
 
     UserDto getByAddressId(int id);
 
-    List<User> getAll();
+    List<UserDto> getAll();
 }

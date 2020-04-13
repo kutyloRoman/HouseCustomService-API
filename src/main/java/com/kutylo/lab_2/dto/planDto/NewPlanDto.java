@@ -1,8 +1,8 @@
-package com.kutylo.lab_2.dto;
+package com.kutylo.lab_2.dto.planDto;
 
 import io.swagger.annotations.ApiModelProperty;
 
-public class PlanDto {
+public class NewPlanDto {
 
     @ApiModelProperty(example = "12.03.2020")
     private String date;
@@ -14,9 +14,7 @@ public class PlanDto {
 
     private int teamId;
 
-    //----------------------------------------------------------------//
-    public PlanDto() {
-    }
+    //-------------------------------------------------//
 
     public String getDate() {
         return date;
