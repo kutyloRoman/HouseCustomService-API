@@ -22,9 +22,6 @@ public class PlanServiceImpl implements PlanService {
     private PlanDao planDao;
 
     @Autowired
-    private PlanMapper planMapper;
-
-    @Autowired
     FullPlanMapper fullPlanMapper;
 
     @Autowired

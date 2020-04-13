@@ -75,5 +75,5 @@ VALUES ('electric', 'big', '2h', '1');
 INSERT INTO team(amount,description)
 VALUES ('2','des');
 
-INSERT INTO plan(custom_id,team_id,date,price)
-VALUES ('1','1','25.02','150');
+-- INSERT INTO plan(custom_id,team_id,date,price)
+-- VALUES ('1','1','25.02','150');
